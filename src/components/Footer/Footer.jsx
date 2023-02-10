@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line no-unused-vars
 import style from "./Footer.module.css";
 import ButtonFooter from "./ButtonFooter";
 

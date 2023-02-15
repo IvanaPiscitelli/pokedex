@@ -1,0 +1,28 @@
+.pokelist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 18px;
+  padding: 0px 10px 20px 10px;
+  margin: auto;
+}
+
+@media screen and (max-width: 992px) {
+  .pokelist-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .pokelist-grid {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 30px;
+  }
+}
+
+@media screen and (min-width: 1340px) {
+  .pokelist-grid {
+    width: 1280px;
+    margin: auto;
+  }
+}

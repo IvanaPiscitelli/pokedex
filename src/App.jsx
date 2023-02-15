@@ -1,17 +1,21 @@
+import { Fragment } from "react";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import Pokelist from "./components/Main/Pokelist";
 import "./App.css";
 
+import SearchBar from "./components/SearchBar/SearchBar";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <div className={["box-container"]}>
+        <Header />
+        <SearchBar />
+      </div>
+
+      <Pokelist />
+      <Footer />
+    </Fragment>
   );
 }
 

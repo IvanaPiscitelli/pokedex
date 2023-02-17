@@ -1,34 +1,27 @@
 header {
+  height: 100px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  position: absolute;
-  padding: 0 350px 0 30px;
-  top: 30px;
-  width: 100%;
-  height: 50px;
-  background: linear-gradient(115deg, #ddd3d8 57.7%, black 57.7%);
+  margin-top: 30px;
+  padding: 10px;
 }
 
-img {
-  width: 30px;
-  margin-right: 10px;
+.title-logo {
+  font-family: "Pokemon Hollow";
+  font-weight: 700px;
+  margin-left: 10px;
+  font-size: 50px;
+  color: #292524;
 }
 
-.headerPics {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 40%;
-  gap: 150px;
+.logo-header {
+  width: 160px;
 }
-.headerPics p {
-  font-size: 16px;
-  font-weight: 700;
-}
-.caughtSeen {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 27px;
+
+@media screen and (max-width: 410px) {
+  header {
+    width: auto;
+    margin-right: 30px;
+  }
 }

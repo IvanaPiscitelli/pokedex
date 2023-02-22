@@ -5,13 +5,36 @@ import Header from "./components/Header/Header";
 import Pokelist from "./components/Main/Pokelist";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Pagination from "./components/Pagination/Pagination";
-import "./App.css";
+import style from "./App.module.css";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
-  const [isLoading, setisLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(0);
+  const [search, setSearch] = useState("");
+  const [notFound, setNotFound] = useState(false);
+
+  const getPokemons = async (limit, offset) => {
+    try {
+      setIsLoading(true);
+      const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+      setTotalPages(Math.ceil(data.count / 25));
+      const promises = data.results.map(async (pokemon) => {
+        const { data } = await axios.get(pokemon.url);
+        return data;
+      });
+      const results = await Promise.all(promises);
+      setPokemons(results);
+      setIsLoading(false);
+      setNotFound(false);
+    } catch (error) {
+      setNotFound(true);
+      setIsLoading(false);
+
+      console.log(error.message);
+    }
+  };
 
   const prevPageHandler = () => {
     const nextPage = Math.max(page - 1, 0);
@@ -23,39 +46,62 @@ function App() {
     setPage(nextPage);
   };
 
-  useEffect(() => {
-    setisLoading(true);
-    const getPokemons = async (limit, offset) => {
-      try {
-        const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
-        setTotalPages(Math.ceil(data.count / 25));
-        const promises = data.results.map(async (pokemon) => {
-          const { data } = await axios.get(pokemon.url);
-          return data;
-        });
-        const results = await Promise.all(promises);
-        setPokemons(results);
-        setisLoading(false);
-      } catch (error) {
-        console.log(error.message);
+  const searchChangeHandler = async (event) => {
+    setSearch(event.target.value);
+
+    if (event.target.value.length === 0) {
+      getPokemons(25, 25 * page);
+    }
+  };
+
+  const searchClickHandler = async () => {
+    if (search.length === 0) return;
+
+    setIsLoading(true);
+    try {
+      const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search.toLowerCase()}`);
+      if (!data) {
+        setSearch("");
+        setIsLoading(false);
+        setNotFound(true);
+        return;
+      } else {
+        setSearch("");
+        setIsLoading(false);
+        setPokemons([data]);
+        setPage(0);
+        setTotalPages(1);
+        setNotFound(false);
       }
-    };
+    } catch (error) {
+      setIsLoading(false);
+      setNotFound(true);
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
     getPokemons(25, 25 * page);
   }, [page]);
 
   return (
     <Fragment>
-      <div className={["box-container"]}>
+      <div className={style["box-container"]}>
         <Header />
-        <SearchBar />
+        <SearchBar onSearch={searchChangeHandler} onSearchButton={searchClickHandler} />
+        <Pagination
+          page={page + 1}
+          totalPages={totalPages}
+          onLeftClick={prevPageHandler}
+          onRightClick={nextPageHandler}
+        />
+        {notFound ? (
+          <div className={style["not-found-text"]}>Pokémon not Found 📛 </div>
+        ) : (
+          <Pokelist isLoading={isLoading} pokemons={pokemons} />
+        )}
       </div>
-      <Pagination
-        page={page + 1}
-        totalPages={totalPages}
-        onLeftClick={prevPageHandler}
-        onRightClick={nextPageHandler}
-      />
-      <Pokelist isLoading={isLoading} pokemons={pokemons} />
+
       <Footer />
     </Fragment>
   );

@@ -1,4 +1,5 @@
 .footer {
+  position: relative;
   font-family: inherit;
   background-color: #363636;
   padding: 10px;

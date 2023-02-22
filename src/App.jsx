@@ -4,7 +4,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Pokelist from "./components/Main/Pokelist";
 import SearchBar from "./components/SearchBar/SearchBar";
-import Pagination from "./components/Pagination";
+import Pagination from "./components/Pagination/Pagination";
 import "./App.css";
 
 function App() {

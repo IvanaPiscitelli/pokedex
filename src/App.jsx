@@ -89,16 +89,18 @@ function App() {
       <div className={style["box-container"]}>
         <Header />
         <SearchBar onSearch={searchChangeHandler} onSearchButton={searchClickHandler} />
-        <Pagination
-          page={page + 1}
-          totalPages={totalPages}
-          onLeftClick={prevPageHandler}
-          onRightClick={nextPageHandler}
-        />
         {notFound ? (
           <div className={style["not-found-text"]}>Pokémon not Found 📛 </div>
         ) : (
-          <Pokelist isLoading={isLoading} pokemons={pokemons} />
+          <>
+            <Pagination
+              page={page + 1}
+              totalPages={totalPages}
+              onLeftClick={prevPageHandler}
+              onRightClick={nextPageHandler}
+            />
+            <Pokelist isLoading={isLoading} pokemons={pokemons} />
+          </>
         )}
       </div>
 

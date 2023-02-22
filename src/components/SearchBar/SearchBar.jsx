@@ -5,10 +5,10 @@ const SearchBar = ({ onSearch, onSearchButton }) => {
   return (
     <nav className={style["searchbar-container"]}>
       <div className={style.searchbar}>
-        <input type="text" placeholder="Cerca Pokémon" onChange={onSearch} />
+        <input type="text" placeholder="Find Pokémon" onChange={onSearch} />
       </div>
       <div className={style["searchbar-btn"]}>
-        <button onClick={onSearchButton}>Cerca</button>
+        <button onClick={onSearchButton}>Find</button>
       </div>
     </nav>
   );

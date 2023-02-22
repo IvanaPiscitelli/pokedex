@@ -29,11 +29,13 @@
     width: 200px;
   }
 }
+
 .searchbar input:focus {
   outline: none;
 }
 
 .searchbar-btn button {
+  cursor: pointer;
   background-color: #363636;
   border: none;
   border-radius: 10px;
@@ -41,4 +43,8 @@
   color: white;
   padding: 10px 12px;
   margin-left: 20px;
+}
+
+.searchbar-btn button:active {
+  background-color: #da5957;
 }

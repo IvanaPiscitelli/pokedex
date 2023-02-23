@@ -6,6 +6,7 @@ import Pokelist from "./components/Main/Pokelist";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Pagination from "./components/Pagination/Pagination";
 import style from "./App.module.css";
+import ShowCountPokemons from "./components/ShowCountPokemons/ShowCountPokemons";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
@@ -93,12 +94,15 @@ function App() {
           <div className={style["not-found-text"]}>Pokémon not Found 📛 </div>
         ) : (
           <>
-            <Pagination
-              page={page + 1}
-              totalPages={totalPages}
-              onLeftClick={prevPageHandler}
-              onRightClick={nextPageHandler}
-            />
+            <div className={style["info-pokemon"]}>
+              <ShowCountPokemons />
+              <Pagination
+                page={page + 1}
+                totalPages={totalPages}
+                onLeftClick={prevPageHandler}
+                onRightClick={nextPageHandler}
+              />
+            </div>
             <Pokelist isLoading={isLoading} pokemons={pokemons} />
           </>
         )}

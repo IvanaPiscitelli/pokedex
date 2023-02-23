@@ -28,8 +28,33 @@
 .card-info h3 {
   text-transform: capitalize;
 }
+
+.box-btn-pokemon-container {
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+  width: 40px;
+  justify-content: flex-end;
+  gap: 30px;
+}
+.btn-cacth {
+  display: flex;
+}
+
 .btn-pokemon {
+  cursor: pointer;
+  border: none;
   width: 50px;
+  background-color: #f0f0f0;
+  padding: 4px;
+  border-radius: 4px;
+  font-family: "Roboto", sans-serif;
+}
+.btn-cacth:active {
+  background-color: #f4301a;
+}
+.btn-seen:active {
+  background-color: #6a5a58;
 }
 
 .card-bottom {

@@ -22,7 +22,11 @@ const Pokemon = ({ id, name, img, types }) => {
               );
             })}
           </div>
-          <button className={style["btn-pokemon"]}>Seen</button>
+          <div className={style["box-btn-pokemon-container"]}>
+            <button className={`${style["btn-pokemon"]} ${style["btn-cacth"]}`}>Catch</button>
+
+            <button className={`${style["btn-pokemon"]} ${style["btn-seen"]}`}>Seen</button>
+          </div>
         </div>
       </div>
     </div>

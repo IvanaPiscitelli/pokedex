@@ -1,5 +1,7 @@
 import React from "react";
 import style from "./Pokemon.module.css";
+import imgBallCatch from "../../img/pokeballCatch.png";
+import imgBallSeen from "../../img/pokeballSeen.png";
 
 const Pokemon = ({ id, name, img, types }) => {
   return (
@@ -23,9 +25,13 @@ const Pokemon = ({ id, name, img, types }) => {
             })}
           </div>
           <div className={style["box-btn-pokemon-container"]}>
-            <button className={`${style["btn-pokemon"]} ${style["btn-cacth"]}`}>Catch</button>
+            <button className={`${style["btn-pokemon"]} ${style["btn-cacth"]}`}>
+              <img src={imgBallCatch} alt="pokeball catch" width="28" height="28" />
+            </button>
 
-            <button className={`${style["btn-pokemon"]} ${style["btn-seen"]}`}>Seen</button>
+            <button className={`${style["btn-pokemon"]} ${style["btn-seen"]}`}>
+              <img src={imgBallSeen} alt="pokeball seen" width="28" height="28" />
+            </button>
           </div>
         </div>
       </div>

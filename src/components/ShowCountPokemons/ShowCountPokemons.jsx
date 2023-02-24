@@ -8,10 +8,12 @@ const ShowCountPokemons = () => {
     <div className={style["img-container"]}>
       <div className={style["img-catch"]}>
         <img src={imgBallCatch} alt="pokeball catch" width="28" height="28" />
+        <p>Catch</p>
         <span className={style.count}>1</span>
       </div>
       <div className={style["img-seen"]}>
         <img src={imgBallSeen} alt="pokeball seen" width="28" height="28" />
+        <p>Seen</p>
         <span className={style.count}>1</span>
       </div>
     </div>

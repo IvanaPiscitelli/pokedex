@@ -18,7 +18,10 @@
   padding: 10px 10px 10px 10px;
   flex: 1;
 }
-
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
 .card-info {
   display: flex;
   flex-direction: row;
@@ -67,7 +70,10 @@
 .types {
   display: flex;
 }
+
 .type-text {
   margin-right: 10px;
   text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 400;
 }

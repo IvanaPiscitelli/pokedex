@@ -2,8 +2,14 @@ import { useReducer } from "react";
 import FavoritePokemonContext from "./favorite-pokemon-context";
 
 const favoritePokemonDefaultState = {
-  catchFavoritePokemons: [],
-  seenFavoritePokemons: [],
+  catchFavoritePokemons: window.localStorage
+    .getItem("catchFavoritePokemons")
+    .split(",")
+    .filter((element) => element),
+  seenFavoritePokemons: window.localStorage
+    .getItem("seenFavoritePokemons")
+    .split(",")
+    .filter((element) => element),
 };
 
 const favoritePokemonReducer = (state, action) => {
@@ -15,8 +21,7 @@ const favoritePokemonReducer = (state, action) => {
       lastState = state.catchFavoritePokemons.filter((pokemon) => pokemon !== action.name);
     } else {
       //Case where favorite pokemon is not in array
-      lastState = [...state.catchFavoritePokemons];
-      lastState.push(action.name);
+      lastState = state.catchFavoritePokemons.concat(action.name);
     }
 
     window.localStorage.setItem("catchFavoritePokemons", lastState);
@@ -32,8 +37,7 @@ const favoritePokemonReducer = (state, action) => {
       lastState = state.seenFavoritePokemons.filter((pokemon) => pokemon !== action.name);
     } else {
       //Case where favorite pokemon is not in array
-      lastState = [...state.seenFavoritePokemons];
-      lastState.push(action.name);
+      lastState = state.seenFavoritePokemons.concat(action.name);
     }
 
     window.localStorage.setItem("seenFavoritePokemons", lastState);

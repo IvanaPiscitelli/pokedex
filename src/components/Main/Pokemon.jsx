@@ -4,7 +4,7 @@ import imgBallCatch from "../../img/pokeballCatch.png";
 import imgBallSeen from "../../img/pokeballSeen.png";
 import FavoritePokemonContext from "../store/favorite-pokemon-context";
 
-const Pokemon = ({ id, name, img, types, loadFavoritePokemons }) => {
+const Pokemon = ({ id, name, img, types, loadFavoritePokemons, favoritesCatched, favoritesSeen }) => {
   const { catchFavoritePokemon, seenFavoritePokemon } = useContext(FavoritePokemonContext);
 
   const updateCatchPokemon = () => {
@@ -16,6 +16,9 @@ const Pokemon = ({ id, name, img, types, loadFavoritePokemons }) => {
     seenFavoritePokemon(name);
     setTimeout(() => loadFavoritePokemons(), 50);
   };
+
+  const catchedPressed = favoritesCatched.includes(name) ? `${style["btn-cacth-pressed"]}` : "";
+  const seenPressed = favoritesSeen.includes(name) ? `${style["btn-seen-pressed"]}` : "";
 
   return (
     <div className={style["pokemon-card"]}>
@@ -38,11 +41,17 @@ const Pokemon = ({ id, name, img, types, loadFavoritePokemons }) => {
             })}
           </div>
           <div className={style["box-btn-pokemon-container"]}>
-            <button className={`${style["btn-pokemon"]} ${style["btn-cacth"]}`} onClick={updateCatchPokemon}>
+            <button
+              className={`${style["btn-pokemon"]} ${style["btn-cacth"]} ${catchedPressed}`}
+              onClick={updateCatchPokemon}
+            >
               <img src={imgBallCatch} alt="pokeball catch" width="28" height="28" />
             </button>
 
-            <button className={`${style["btn-pokemon"]} ${style["btn-seen"]}`} onClick={updateSeenPokemon}>
+            <button
+              className={`${style["btn-pokemon"]} ${style["btn-seen"]} ${seenPressed}`}
+              onClick={updateSeenPokemon}
+            >
               <img src={imgBallSeen} alt="pokeball seen" width="28" height="28" />
             </button>
           </div>

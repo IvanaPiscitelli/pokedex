@@ -93,6 +93,7 @@ function App() {
       .getItem("catchFavoritePokemons")
       .split(",")
       .filter((element) => element);
+
     const favoritesSeenPokemon = window.localStorage
       .getItem("seenFavoritePokemons")
       .split(",")
@@ -124,7 +125,13 @@ function App() {
                 onRightClick={nextPageHandler}
               />
             </div>
-            <Pokelist isLoading={isLoading} pokemons={pokemons} loadFavoritePokemons={loadFavoritePokemons} />
+            <Pokelist
+              isLoading={isLoading}
+              pokemons={pokemons}
+              loadFavoritePokemons={loadFavoritePokemons}
+              favoritesCatched={favoritesCatched}
+              favoritesSeen={favoritesSeen}
+            />
           </>
         )}
       </div>

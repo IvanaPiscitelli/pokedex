@@ -8,6 +8,7 @@ import Pagination from "./components/Pagination/Pagination";
 import style from "./App.module.css";
 import ShowCountPokemons from "./components/ShowCountPokemons/ShowCountPokemons";
 import FavoritePokemonProvider from "./components/store/FavoritePokemonProvider";
+import Modal from "./components/Modal/Modal";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
@@ -18,6 +19,7 @@ function App() {
   const [notFound, setNotFound] = useState(false);
   const [favoritesCatched, setFavoritesCatched] = useState([]);
   const [favoritesSeen, setFavoritesSeen] = useState([]);
+  const [isModalClicked, setIsModalClicked] = useState(false);
 
   const getPokemons = async (limit, offset) => {
     try {
@@ -107,8 +109,11 @@ function App() {
     loadFavoritePokemons();
   }, []);
 
+  console.log(isModalClicked);
+
   return (
     <FavoritePokemonProvider>
+      {isModalClicked && <Modal show={isModalClicked} closeModal={() => setIsModalClicked(false)} />}
       <div className={style["box-container"]}>
         <Header />
         <SearchBar onSearch={searchChangeHandler} onSearchButton={searchClickHandler} />
@@ -131,11 +136,11 @@ function App() {
               loadFavoritePokemons={loadFavoritePokemons}
               favoritesCatched={favoritesCatched}
               favoritesSeen={favoritesSeen}
+              setIsModalClicked={setIsModalClicked}
             />
           </>
         )}
       </div>
-
       <Footer />
     </FavoritePokemonProvider>
   );

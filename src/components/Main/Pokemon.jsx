@@ -4,7 +4,16 @@ import imgBallCatch from "../../img/pokeballCatch.png";
 import imgBallSeen from "../../img/pokeballSeen.png";
 import FavoritePokemonContext from "../store/favorite-pokemon-context";
 
-const Pokemon = ({ id, name, img, types, loadFavoritePokemons, favoritesCatched, favoritesSeen }) => {
+const Pokemon = ({
+  id,
+  name,
+  img,
+  types,
+  loadFavoritePokemons,
+  favoritesCatched,
+  favoritesSeen,
+  setIsModalClicked,
+}) => {
   const { catchFavoritePokemon, seenFavoritePokemon } = useContext(FavoritePokemonContext);
 
   const updateCatchPokemon = () => {
@@ -17,11 +26,15 @@ const Pokemon = ({ id, name, img, types, loadFavoritePokemons, favoritesCatched,
     setTimeout(() => loadFavoritePokemons(), 50);
   };
 
+  const showModal = () => {
+    setIsModalClicked(true);
+  };
+
   const catchedPressed = favoritesCatched.includes(name) ? `${style["btn-cacth-pressed"]}` : "";
   const seenPressed = favoritesSeen.includes(name) ? `${style["btn-seen-pressed"]}` : "";
 
   return (
-    <div className={style["pokemon-card"]}>
+    <div className={style["pokemon-card"]} onClick={showModal}>
       <div className={style["container-img-pokemon"]}>
         <img src={img} alt="sprite pokemon" className={style["img-pokemon"]} />
       </div>

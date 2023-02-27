@@ -1,7 +1,14 @@
 import Pokemon from "./Pokemon";
 import style from "./PokeList.module.css";
 
-const Pokelist = ({ pokemons, isLoading, loadFavoritePokemons, favoritesCatched, favoritesSeen }) => {
+const Pokelist = ({
+  pokemons,
+  isLoading,
+  loadFavoritePokemons,
+  favoritesCatched,
+  favoritesSeen,
+  setIsModalClicked,
+}) => {
   return (
     <div className={style["pokelist-grid"]}>
       {isLoading ? (
@@ -18,6 +25,7 @@ const Pokelist = ({ pokemons, isLoading, loadFavoritePokemons, favoritesCatched,
               loadFavoritePokemons={loadFavoritePokemons}
               favoritesCatched={favoritesCatched}
               favoritesSeen={favoritesSeen}
+              setIsModalClicked={setIsModalClicked}
             />
           );
         })

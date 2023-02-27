@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -7,6 +7,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import Pagination from "./components/Pagination/Pagination";
 import style from "./App.module.css";
 import ShowCountPokemons from "./components/ShowCountPokemons/ShowCountPokemons";
+import FavoritePokemonProvider from "./components/store/FavoritePokemonProvider";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
@@ -15,6 +16,8 @@ function App() {
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState("");
   const [notFound, setNotFound] = useState(false);
+  const [favoritesCatched, setFavoritesCatched] = useState([]);
+  const [favoritesSeen, setFavoritesSeen] = useState([]);
 
   const getPokemons = async (limit, offset) => {
     try {
@@ -85,8 +88,26 @@ function App() {
     getPokemons(25, 25 * page);
   }, [page]);
 
+  const loadFavoritePokemons = () => {
+    const favoritesCatchedPokemon = window.localStorage
+      .getItem("catchFavoritePokemons")
+      .split(",")
+      .filter((element) => element);
+    const favoritesSeenPokemon = window.localStorage
+      .getItem("seenFavoritePokemons")
+      .split(",")
+      .filter((element) => element);
+
+    setFavoritesCatched(favoritesCatchedPokemon);
+    setFavoritesSeen(favoritesSeenPokemon);
+  };
+
+  useEffect(() => {
+    loadFavoritePokemons();
+  }, []);
+
   return (
-    <Fragment>
+    <FavoritePokemonProvider>
       <div className={style["box-container"]}>
         <Header />
         <SearchBar onSearch={searchChangeHandler} onSearchButton={searchClickHandler} />
@@ -95,7 +116,7 @@ function App() {
         ) : (
           <>
             <div className={style["info-pokemon"]}>
-              <ShowCountPokemons />
+              <ShowCountPokemons favoritesCatchedPokemon={favoritesCatched} favoritesSeenPokemon={favoritesSeen} />
               <Pagination
                 page={page + 1}
                 totalPages={totalPages}
@@ -103,13 +124,13 @@ function App() {
                 onRightClick={nextPageHandler}
               />
             </div>
-            <Pokelist isLoading={isLoading} pokemons={pokemons} />
+            <Pokelist isLoading={isLoading} pokemons={pokemons} loadFavoritePokemons={loadFavoritePokemons} />
           </>
         )}
       </div>
 
       <Footer />
-    </Fragment>
+    </FavoritePokemonProvider>
   );
 }
 

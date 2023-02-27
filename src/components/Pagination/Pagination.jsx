@@ -1,4 +1,3 @@
-import React from "react";
 import { LeftArrow, RightArrow } from "../../img/arrow";
 import style from "./Pagination.module.css";
 

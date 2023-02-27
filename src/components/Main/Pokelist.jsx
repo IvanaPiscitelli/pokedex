@@ -1,8 +1,7 @@
-import React from "react";
 import Pokemon from "./Pokemon";
 import style from "./PokeList.module.css";
 
-const Pokelist = ({ pokemons, isLoading }) => {
+const Pokelist = ({ pokemons, isLoading, loadFavoritePokemons }) => {
   return (
     <div className={style["pokelist-grid"]}>
       {isLoading ? (
@@ -16,6 +15,7 @@ const Pokelist = ({ pokemons, isLoading }) => {
               id={pokemon.id}
               img={pokemon.sprites.front_default}
               types={pokemon.types}
+              loadFavoritePokemons={loadFavoritePokemons}
             />
           );
         })

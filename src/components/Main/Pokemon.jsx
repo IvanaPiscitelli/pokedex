@@ -1,9 +1,22 @@
-import React from "react";
+import { useContext } from "react";
 import style from "./Pokemon.module.css";
 import imgBallCatch from "../../img/pokeballCatch.png";
 import imgBallSeen from "../../img/pokeballSeen.png";
+import FavoritePokemonContext from "../store/favorite-pokemon-context";
 
-const Pokemon = ({ id, name, img, types }) => {
+const Pokemon = ({ id, name, img, types, loadFavoritePokemons }) => {
+  const { catchFavoritePokemon, seenFavoritePokemon } = useContext(FavoritePokemonContext);
+
+  const updateCatchPokemon = () => {
+    catchFavoritePokemon(name);
+    setTimeout(() => loadFavoritePokemons(), 50);
+  };
+
+  const updateSeenPokemon = () => {
+    seenFavoritePokemon(name);
+    setTimeout(() => loadFavoritePokemons(), 50);
+  };
+
   return (
     <div className={style["pokemon-card"]}>
       <div className={style["container-img-pokemon"]}>
@@ -25,11 +38,11 @@ const Pokemon = ({ id, name, img, types }) => {
             })}
           </div>
           <div className={style["box-btn-pokemon-container"]}>
-            <button className={`${style["btn-pokemon"]} ${style["btn-cacth"]}`}>
+            <button className={`${style["btn-pokemon"]} ${style["btn-cacth"]}`} onClick={updateCatchPokemon}>
               <img src={imgBallCatch} alt="pokeball catch" width="28" height="28" />
             </button>
 
-            <button className={`${style["btn-pokemon"]} ${style["btn-seen"]}`}>
+            <button className={`${style["btn-pokemon"]} ${style["btn-seen"]}`} onClick={updateSeenPokemon}>
               <img src={imgBallSeen} alt="pokeball seen" width="28" height="28" />
             </button>
           </div>

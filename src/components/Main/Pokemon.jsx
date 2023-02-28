@@ -5,16 +5,15 @@ import imgBallSeen from "../../img/pokeballSeen.png";
 import FavoritePokemonContext from "../store/favorite-pokemon-context";
 
 const Pokemon = ({
-  id,
-  name,
-  img,
-  types,
+  pokemon,
   loadFavoritePokemons,
   favoritesCatched,
   favoritesSeen,
   setIsModalClicked,
+  saveWrappedObjPokemon,
 }) => {
   const { catchFavoritePokemon, seenFavoritePokemon } = useContext(FavoritePokemonContext);
+  const { id, name, sprites, types } = pokemon;
 
   const updateCatchPokemon = () => {
     catchFavoritePokemon(name);
@@ -28,19 +27,20 @@ const Pokemon = ({
 
   const showModal = () => {
     setIsModalClicked(true);
+    saveWrappedObjPokemon(pokemon);
   };
 
   const catchedPressed = favoritesCatched.includes(name) ? `${style["btn-cacth-pressed"]}` : "";
   const seenPressed = favoritesSeen.includes(name) ? `${style["btn-seen-pressed"]}` : "";
 
   return (
-    <div className={style["pokemon-card"]} onClick={showModal}>
+    <div className={style["pokemon-card"]}>
       <div className={style["container-img-pokemon"]}>
-        <img src={img} alt="sprite pokemon" className={style["img-pokemon"]} />
+        <img src={sprites.front_default} alt="sprite pokemon" className={style["img-pokemon"]} onClick={showModal} />
       </div>
       <div className={style["card-body"]}>
         <div className={style["card-info"]}>
-          <h3>{name}</h3>
+          <h3 onClick={showModal}>{name}</h3>
           <div>#{id}</div>
         </div>
         <div className={style["card-bottom"]}>

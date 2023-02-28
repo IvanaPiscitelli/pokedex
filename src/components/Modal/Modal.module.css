@@ -30,12 +30,117 @@
   padding: 32px;
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border-radius: 8px;
 }
-
 .content > button {
   margin: 12px;
+}
+.box-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 30px;
+}
+
+/* Image */
+.box-sprite {
+  padding: 4px 5px;
+}
+.img-sprite {
+  width: 350px;
+  height: 350px;
+}
+
+.box-info-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: -webkit-fill-available;
+}
+
+.box-title h1 {
+  text-transform: capitalize;
+}
+/* Center */
+
+.box-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box-type-center {
+  display: flex;
+  flex-direction: column;
+}
+.box-type-flex {
+  display: flex;
+}
+.body-center {
+  display: flex;
+  gap: 15px;
+  text-transform: capitalize;
+  justify-content: space-between;
+  margin: 3px 0px;
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+}
+
+.type-text {
+  margin-right: 10px;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.box-bottom {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+.body-bottom {
+  display: flex;
+  gap: 15px;
+  text-transform: capitalize;
+  justify-content: space-between;
+  margin: 3px 0px;
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+}
+
+.body-bottom span {
+  text-transform: capitalize;
+}
+.box-info-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-box-bottom {
+  margin: auto;
+  padding-top: 25px;
+}
+.btn-box-bottom button {
+  cursor: pointer;
+  background-color: #363636;
+  border: none;
+  border-radius: 10px;
+  height: 100%;
+  color: white;
+  padding: 10px 29px;
+  margin-left: 55px;
+  font-size: 16px;
+}
+.btn-box-bottom button:active {
+  background-color: #da5957;
 }
 
 @keyframes slide-down {

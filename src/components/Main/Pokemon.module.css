@@ -2,11 +2,11 @@
   display: flex;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
-  cursor: pointer;
 }
 
 .container-img-pokemon {
   padding: 4px 5px;
+  cursor: pointer;
 }
 .img-pokemon {
   width: 70px;
@@ -31,6 +31,7 @@ h3 {
 }
 .card-info h3 {
   text-transform: capitalize;
+  cursor: pointer;
 }
 
 .box-btn-pokemon-container {

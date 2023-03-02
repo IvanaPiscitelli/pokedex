@@ -112,8 +112,6 @@ function App() {
     loadFavoritePokemons();
   }, []);
 
-  console.log(isModalClicked);
-
   return (
     <FavoritePokemonProvider>
       <div className={style["box-container"]}>

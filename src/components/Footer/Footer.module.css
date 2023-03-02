@@ -9,9 +9,25 @@
   bottom: 0;
 }
 footer p {
+  display: flex;
+  justify-content: center;
   color: #e5e5e5;
-  text-align: center;
-  margin-right: 10px;
   font-size: 18px;
   font-weight: 700;
+}
+
+footer img {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  filter: invert(100%) sepia(100%) saturate(23%) hue-rotate(338deg) brightness(105%) contrast(106%);
+}
+
+footer a,
+footer a:visited,
+footer a:hover,
+footer a:active {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
 }

@@ -1,0 +1,90 @@
+.pokemon-card {
+  display: flex;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.container-img-pokemon {
+  padding: 4px 5px;
+  cursor: pointer;
+}
+.img-pokemon {
+  width: 300px;
+  height: 300px;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 10px 10px 10px;
+  flex: 1;
+}
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.card-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.card-info h3 {
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.box-btn-pokemon-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.btn-cacth {
+  display: flex;
+}
+
+.btn-pokemon {
+  cursor: pointer;
+  border: none;
+  background-color: #f0f0f0;
+  padding: 4px;
+  border-radius: 4px;
+  font-family: "Roboto", sans-serif;
+}
+
+.btn-cacth-pressed {
+  background-color: #f4301a;
+}
+
+.btn-cacth:active {
+  background-color: #f4301a;
+}
+
+.btn-seen-pressed {
+  background-color: #6a5a58;
+}
+
+.btn-seen:active {
+  background-color: #6a5a58;
+}
+
+.card-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.types {
+  display: flex;
+}
+
+.type-text {
+  margin-right: 10px;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 400;
+}

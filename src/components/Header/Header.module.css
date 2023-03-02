@@ -1,0 +1,27 @@
+header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.title-logo {
+  font-family: "Pokemon Hollow";
+  font-weight: 700px;
+  margin-left: 10px;
+  font-size: 50px;
+  color: #292524;
+}
+
+.logo-header {
+  width: 160px;
+}
+
+@media screen and (max-width: 410px) {
+  header {
+    width: auto;
+    margin-right: 30px;
+  }
+}

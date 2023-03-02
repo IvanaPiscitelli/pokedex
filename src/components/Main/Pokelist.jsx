@@ -2,6 +2,7 @@ import Pokemon from "./Pokemon";
 import style from "./PokeList.module.css";
 import Modal from "../Modal/Modal";
 import { useState } from "react";
+import Loader from "../Loader/Loader";
 
 const Pokelist = ({
   pokemons,
@@ -29,7 +30,7 @@ const Pokelist = ({
       )}
       <div className={style["pokelist-grid"]}>
         {isLoading ? (
-          <p>Loading...</p>
+          <Loader />
         ) : (
           pokemons.map((pokemon) => {
             return (

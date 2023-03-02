@@ -90,15 +90,19 @@ function App() {
   }, [page]);
 
   const loadFavoritePokemons = () => {
-    const favoritesCatchedPokemon = window.localStorage
-      .getItem("catchFavoritePokemons")
-      .split(",")
-      .filter((element) => element);
+    const favoritesCatchedPokemon = window.localStorage.getItem("catchFavoritePokemons")
+      ? window.localStorage
+          .getItem("catchFavoritePokemons")
+          .split(",")
+          .filter((element) => element)
+      : [];
 
-    const favoritesSeenPokemon = window.localStorage
-      .getItem("seenFavoritePokemons")
-      .split(",")
-      .filter((element) => element);
+    const favoritesSeenPokemon = window.localStorage.getItem("seenFavoritePokemons")
+      ? window.localStorage
+          .getItem("seenFavoritePokemons")
+          .split(",")
+          .filter((element) => element)
+      : [];
 
     setFavoritesCatched(favoritesCatchedPokemon);
     setFavoritesSeen(favoritesSeenPokemon);

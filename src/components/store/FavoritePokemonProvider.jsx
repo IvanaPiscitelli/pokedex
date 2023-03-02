@@ -2,14 +2,18 @@ import { useReducer } from "react";
 import FavoritePokemonContext from "./favorite-pokemon-context";
 
 const favoritePokemonDefaultState = {
-  catchFavoritePokemons: window.localStorage
-    .getItem("catchFavoritePokemons")
-    .split(",")
-    .filter((element) => element),
-  seenFavoritePokemons: window.localStorage
-    .getItem("seenFavoritePokemons")
-    .split(",")
-    .filter((element) => element),
+  catchFavoritePokemons: window.localStorage.getItem("catchFavoritePokemons")
+    ? window.localStorage
+        .getItem("catchFavoritePokemons")
+        .split(",")
+        .filter((element) => element)
+    : [],
+  seenFavoritePokemons: window.localStorage.getItem("seenFavoritePokemons")
+    ? window.localStorage
+        .getItem("seenFavoritePokemons")
+        .split(",")
+        .filter((element) => element)
+    : [],
 };
 
 const favoritePokemonReducer = (state, action) => {

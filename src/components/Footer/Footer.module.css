@@ -9,6 +9,9 @@
   bottom: 0;
 }
 footer p {
-  color: wheat;
+  color: #e5e5e5;
   text-align: center;
+  margin-right: 10px;
+  font-size: 18px;
+  font-weight: 700;
 }

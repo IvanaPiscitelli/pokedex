@@ -1,28 +1,53 @@
 import Pokemon from "./Pokemon";
 import style from "./PokeList.module.css";
+import Modal from "../Modal/Modal";
+import { useState } from "react";
 
-const Pokelist = ({ pokemons, isLoading, loadFavoritePokemons, favoritesCatched, favoritesSeen }) => {
+const Pokelist = ({
+  pokemons,
+  isLoading,
+  loadFavoritePokemons,
+  favoritesCatched,
+  favoritesSeen,
+  setIsModalClicked,
+  isModalClicked,
+}) => {
+  const [wrappedObjPokemon, setWrappedObjPokemon] = useState();
+
+  const saveWrappedObjPokemon = (pokemon) => {
+    setWrappedObjPokemon(pokemon);
+  };
+
   return (
-    <div className={style["pokelist-grid"]}>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        pokemons.map((pokemon) => {
-          return (
-            <Pokemon
-              key={pokemon.id}
-              name={pokemon.name}
-              id={pokemon.id}
-              img={pokemon.sprites.front_default}
-              types={pokemon.types}
-              loadFavoritePokemons={loadFavoritePokemons}
-              favoritesCatched={favoritesCatched}
-              favoritesSeen={favoritesSeen}
-            />
-          );
-        })
+    <>
+      {isModalClicked && (
+        <Modal
+          show={isModalClicked}
+          closeModal={() => setIsModalClicked(false)}
+          wrappedObjPokemon={wrappedObjPokemon}
+        />
       )}
-    </div>
+      <div className={style["pokelist-grid"]}>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          pokemons.map((pokemon) => {
+            return (
+              <Pokemon
+                key={pokemon.id}
+                pokemon={pokemon}
+                loadFavoritePokemons={loadFavoritePokemons}
+                favoritesCatched={favoritesCatched}
+                favoritesSeen={favoritesSeen}
+                setIsModalClicked={setIsModalClicked}
+                isModalClicked={isModalClicked}
+                saveWrappedObjPokemon={saveWrappedObjPokemon}
+              />
+            );
+          })
+        )}
+      </div>
+    </>
   );
 };
 

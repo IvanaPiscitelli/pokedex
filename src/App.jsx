@@ -18,6 +18,7 @@ function App() {
   const [notFound, setNotFound] = useState(false);
   const [favoritesCatched, setFavoritesCatched] = useState([]);
   const [favoritesSeen, setFavoritesSeen] = useState([]);
+  const [isModalClicked, setIsModalClicked] = useState(false);
 
   const getPokemons = async (limit, offset) => {
     try {
@@ -107,6 +108,8 @@ function App() {
     loadFavoritePokemons();
   }, []);
 
+  console.log(isModalClicked);
+
   return (
     <FavoritePokemonProvider>
       <div className={style["box-container"]}>
@@ -131,11 +134,12 @@ function App() {
               loadFavoritePokemons={loadFavoritePokemons}
               favoritesCatched={favoritesCatched}
               favoritesSeen={favoritesSeen}
+              setIsModalClicked={setIsModalClicked}
+              isModalClicked={isModalClicked}
             />
           </>
         )}
       </div>
-
       <Footer />
     </FavoritePokemonProvider>
   );

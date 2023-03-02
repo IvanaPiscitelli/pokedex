@@ -13,7 +13,6 @@
 
 .backdrop {
   width: 100%;
-  height: 141vh;
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
@@ -64,6 +63,8 @@
   justify-content: space-between;
   align-items: center;
   width: -webkit-fill-available;
+  padding-bottom: 13px;
+  gap: 10px;
 }
 
 .box-title h1 {
@@ -71,14 +72,10 @@
 }
 /* Center */
 
-.box-center {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .box-type-center {
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
 }
 .box-type-flex {
   display: flex;
@@ -100,12 +97,6 @@
   font-weight: 400;
 }
 
-.box-bottom {
-  display: flex;
-
-  justify-content: space-between;
-  align-items: center;
-}
 .body-bottom {
   display: flex;
   gap: 15px;
@@ -141,6 +132,22 @@
 }
 .btn-box-bottom button:active {
   background-color: #da5957;
+}
+
+@media (max-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+  .img-sprite {
+    width: 121px;
+    height: 121px;
+  }
+  .box-title {
+    padding-bottom: 10px;
+  }
 }
 
 @keyframes slide-down {

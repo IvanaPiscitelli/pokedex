@@ -21,7 +21,7 @@ function Modal({ show, closeModal, wrappedObjPokemon }) {
               <div>#{id}</div>
             </div>
           </div>
-          <div className={style["box-center"]}>
+          <div>
             <div className={style["box-type-center"]}>
               <div className={style["body-center"]}>
                 <span>Types:</span>
@@ -45,7 +45,7 @@ function Modal({ show, closeModal, wrappedObjPokemon }) {
               </div>
             </div>
           </div>
-          <div className={style["box-bottom"]}>
+          <div>
             <div className={style["box-info-bottom"]}>
               {stats.map((stat) => {
                 return (
